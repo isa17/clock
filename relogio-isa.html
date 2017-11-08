@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Countdown</title>
+	<!--
+	 Original by Thiago Esser (@thiagoesser) & Alexander Chu (@webchu) for UXConfBR (http://www.uxconf.com.br)
+	 View project on GitHub: https://github.com/thiagoesser/uxconf
+	 (CC BY) 2016
+	 -->
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+	<style>		
+		@import url('./relogio-isa.css');
+	</style>
+	
+</head>
+<body>
+	<div id="countdown">
+			<span class="wrapper-hours" id="hr"></span><span class="wrapper-minutes" id="min"></span>
+	</div>
+
+	<img class="isa-logo" src="logo-branco-isa.svg">
+	<img class="pomba" src="pomba.svg">
+
+	</div>
+
+	<script>		
+		var d,h,m,s,animate;
+
+		function init(){
+			d=new Date();
+			h=d.getHours();
+			m=d.getMinutes();
+			clock();
+		};
+
+		function clock(){
+
+			m++;
+			if(m==60){
+				m=0;
+				h++;
+				if(h==24){
+					h=0;
+				}
+			}
+			// $('sec',s);
+			$('min',m);
+			$('hr',h);
+			animate=setTimeout(clock,60000);
+		};
+
+		function $(id,val){
+			if(val<10){
+				val='0'+val;
+			}
+			document.getElementById(id).innerHTML=val;
+		};
+
+		window.onload=init;
+	</script>
+</body>
+</html>
